@@ -26,9 +26,9 @@
           <Component id="jScrollPane1" alignment="0" pref="614" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="281" max="-2" attributes="0"/>
+              <Component id="addStudentButton" min="-2" pref="281" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton2" max="32767" attributes="0"/>
+              <Component id="removeStudentButton" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -39,8 +39,8 @@
               <Component id="jScrollPane1" min="-2" pref="357" max="-2" attributes="0"/>
               <EmptySpace pref="7" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="removeStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -54,7 +54,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="attendanceTable">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="11" style="0"/>
@@ -108,14 +108,16 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="addStudentButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Student"/>
+        <Property name="name" type="java.lang.String" value="addStudentButton" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="removeStudentButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Remove Student"/>
+        <Property name="name" type="java.lang.String" value="removeStudentButton" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>
