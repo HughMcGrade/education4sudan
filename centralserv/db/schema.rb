@@ -30,15 +30,16 @@ ActiveRecord::Schema.define(version: 20131121170627) do
   end
 
   create_table "requests", force: true do |t|
-    t.string "name"
-    t.text   "description"
+    t.string  "name"
+    t.text    "description"
+    t.integer "school_id"
   end
 
   create_table "resources", force: true do |t|
     t.string  "name"
     t.text    "description"
     t.integer "school_id"
-    t.integer "request_id"
+    t.boolean "fulfilled"
   end
 
   create_table "schools", force: true do |t|

@@ -4,7 +4,7 @@ class CreateResources < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :school_id
-      t.integer :request_id
+      t.boolean :fulfilled
     end
   end
 end

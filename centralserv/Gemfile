@@ -44,8 +44,4 @@ group :doc do
 end
 
 #Feature
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
 gem 'tinymce-rails'
