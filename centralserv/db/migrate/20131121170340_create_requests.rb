@@ -5,6 +5,7 @@ class CreateRequests < ActiveRecord::Migration
       t.text :description
       t.integer :school_id
       t.integer :response_id
+      t.string :image_url
     end
   end
 end

@@ -34,12 +34,14 @@ ActiveRecord::Schema.define(version: 20131121173715) do
     t.text    "description"
     t.integer "school_id"
     t.integer "response_id"
+    t.string  "image_url"
   end
 
   create_table "resources", force: true do |t|
     t.string  "name"
     t.text    "description"
     t.integer "school_id"
+    t.string  "image_url"
     t.boolean "fulfilled"
   end
 

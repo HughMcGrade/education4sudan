@@ -6,7 +6,7 @@ Centralserv::Application.routes.draw do
   resources :messages, :only => [:index, :show]
   resources :notifications, :only => [:index, :show, :new]
   resources :requests, :only => [:index, :show]
-  resources :resources, :only => [:index, :new]
+  resources :resources, :only => [:index, :show, :new]
   resources :schools, :only => [:index, :show]
   resources :staffs, :only => [:index, :show, :new]
   

@@ -1,0 +1,23 @@
+<div class="row">
+  <br>
+  <% if @requests.length > 0 %>
+    <div id="infinite-scroll">
+      <% @requests.each do |request| %>
+        <div class="infinite col-md-4">
+          <div class="item-container">
+            <%= link_to image_tag(request.image_url, class: "story-image"), request_path(request) %>
+            <h4><%= link_to request.name, request_path(request), class: "item-link" %></h4>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <nav id="page_nav">
+      <a href="page2.html"></a>
+    </nav>
+
+  <% else %>
+    <h4>There are no current requests to show.</h4>
+  <% end %>
+
+</div>

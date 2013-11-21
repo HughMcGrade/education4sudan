@@ -1,0 +1,257 @@
+/* BASE */
+
+body {
+  font: 1em "Helvetica Neue", Helvetica, sans-serif;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  position: relative;
+  height: 163px;
+}
+
+/* TYPOGRAPHY */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 200;
+}
+
+p {
+  font-size: 0.875em;
+  font-weight: 200;
+}
+
+p.opening {
+  font-size: 1.125em;
+  line-height: 1.5em;
+}
+
+li {
+  font-size: 0.875em;
+  font-weight: 200;
+}
+
+dl {
+  font-size: 0.875em;
+  font-weight: 200;
+}
+
+dl dt {
+  font-style: italic;
+  color: rgb(231,80,92);
+  margin-bottom: 1em;
+  font-weight: normal;
+}
+
+dl dd {
+  margin-bottom: 3em;
+}
+
+label {
+  margin-bottom: 0.5em;
+}
+
+textarea {
+  height: 200px;
+}
+
+.more-link {
+  font-weight: bold;
+}
+
+
+
+/* COMPONENTS */
+
+.blog h2 {
+  margin-bottom: 0;
+}
+
+.blog-time {
+  margin-bottom: 1.5em;
+  display: block;
+}
+
+.button-heading {
+  font-size: 1em;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  background: rgb(231,80,92);
+  border: none;
+  font-size: 1.3125em;
+  font-weight: 200;
+}
+
+.categories {
+  margin-bottom: 3em;
+  float: left;
+}
+
+.categories li {
+  list-style: none;
+  float: left;
+  margin: 0 20px 20px 0;
+}
+
+.footer {
+  margin-top: 3em;
+}
+
+.footer-links {
+  margin-top: 2.5em;
+  padding-top: 1.5em;
+  border-top: 1px dotted rgb(150,150,150);
+}
+
+.footer-links li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.latest-news img {
+  margin-bottom: 1em;
+}
+
+.logo {
+  position: absolute;
+    text-indent: -9999px;
+    width: 257px;
+    height: 163px;
+    background: url(/assets/give_in_kind_logo.svg) no-repeat;
+    background-size: 257px 163px;
+}
+
+.logo a {
+  display: block;
+  width: 257px;
+  height: 163px;
+}
+
+.partners img {
+  height: 100px;
+}
+
+.primary-nav {
+    float: right;
+    list-style: none;
+    margin: 10px 0 0 0;
+/*    width:100%;*/
+    position: relative;
+    z-index: 5;
+}
+.primary-nav li {
+    list-style: none;
+    float: left;
+    margin-left: 20px;
+    position: relative;
+}
+.primary-nav a {
+    display: block;
+}
+
+.primary-nav ul {
+    margin: 0;
+    float: none;
+    position:absolute;
+    left:-9999px; 
+}
+.primary-nav ul li{
+    float: none;
+    margin: 0;
+}
+.primary-nav ul a{
+    white-space: nowrap; 
+}
+.primary-nav li:hover ul{ 
+    left: 0; 
+}
+
+.sidebar-feature {
+  padding-left: 60px;
+}
+
+.sidebar-feature h2 {
+  font-size: 1.5em;
+}
+
+.sidebar-feature ul li {
+  list-style: none;
+}
+
+.social {
+  position: relative;
+}
+
+.social-twitter {
+  position: absolute;
+  top: 9px;
+  right: 5px;
+}
+
+.social-facebook {
+  position: absolute;
+  top: 10px;
+  right: 65px;
+}
+
+.text-columns {
+  -webkit-column-count: 2;
+    -webkit-column-gap: 30px;
+}
+
+.wrapper {
+  padding: 1.5em 0;
+  background: rgb(231,80,92);
+  margin-bottom: 2em;
+  margin-top: 2em;
+  color: rgb(255,255,255);
+}
+
+.wrapper h1 {
+  color: rgb(255,255,255);
+  padding: 0;
+  margin: 0;
+  font-weight: 200;
+}
+
+.wrapper h2 {
+  font-weight: 200;
+  color: rgb(255,255,255);
+}
+
+.wrapper a {
+  color: rgb(255,255,255);
+}
+
+.wrapper-intro {
+  padding: 0;
+}
+
+.wrapper-intro-home h1 {
+  margin-top: 2em;
+}
+
+.wrapper-intro-home div {
+  padding: 0;
+  height: 300px;
+    width: 1000px;
+    height: 300px;
+    background: url(/assets/home_welcome.svg) no-repeat;
+    background-size: 1000px 300px;  
+}
+
+.wrapper-darker {
+  background: rgb(229,35,58);
+}
+
+
+.category-dropdowns {
+  font-size: 150%;
+}
