@@ -2,13 +2,13 @@ Centralserv::Application.routes.draw do
   
   root "dashboard#index"
 
+  resources :dashboard, :only => [:index]
   resources :messages, :only => [:index, :show]
   resources :notifications, :only => [:index, :show, :new]
   resources :requests, :only => [:index, :show]
   resources :resources, :only => [:index, :new]
   resources :schools, :only => [:index, :show]
   resources :staffs, :only => [:index, :show, :new]
-  resources :dashboard, :only => [:index]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
