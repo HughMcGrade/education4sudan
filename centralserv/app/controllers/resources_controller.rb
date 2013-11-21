@@ -4,6 +4,7 @@ class ResourcesController < ApplicationController
   end
 
   def new
+    @resource = Resource.find(params[:id])
   end
 
 end
