@@ -10,5 +10,9 @@
  *
  *= require_self
  *= require twitter/bootstrap
- *= require_tree .
+ *= require flatty/theme-colors
+ *= require flatty/bootstrap/bootstrap
+ *= require flatty/plugins/_plugins
+ *= require flatty/jquery/jquery_ui
+ *= require flatty/light-theme
  */
