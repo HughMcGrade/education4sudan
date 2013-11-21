@@ -18,6 +18,7 @@ public class AttendanceForm extends javax.swing.JDialog {
     public AttendanceForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        //attendanceTable.getModel().addTableModelListener(attendanceTable);
     }
 
     /**
@@ -30,14 +31,14 @@ public class AttendanceForm extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        attendanceTable = new javax.swing.JTable();
+        addStudentButton = new javax.swing.JButton();
+        removeStudentButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        attendanceTable.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        attendanceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -56,13 +57,15 @@ public class AttendanceForm extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable1.setName("attendanceTable"); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        attendanceTable.setGridColor(new java.awt.Color(0, 0, 0));
+        attendanceTable.setName("attendanceTable"); // NOI18N
+        jScrollPane1.setViewportView(attendanceTable);
 
-        jButton1.setText("Add Student");
+        addStudentButton.setText("Add Student");
+        addStudentButton.setName("addStudentButton"); // NOI18N
 
-        jButton2.setText("Remove Student");
+        removeStudentButton.setText("Remove Student");
+        removeStudentButton.setName("removeStudentButton"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,9 +74,9 @@ public class AttendanceForm extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(removeStudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -82,8 +85,8 @@ public class AttendanceForm extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)))
+                    .addComponent(addStudentButton)
+                    .addComponent(removeStudentButton)))
         );
 
         pack();
@@ -132,9 +135,9 @@ public class AttendanceForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton addStudentButton;
+    private javax.swing.JTable attendanceTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton removeStudentButton;
     // End of variables declaration//GEN-END:variables
 }
