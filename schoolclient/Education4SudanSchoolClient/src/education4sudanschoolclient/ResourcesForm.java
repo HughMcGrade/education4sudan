@@ -6,18 +6,123 @@
 
 package education4sudanschoolclient;
 
+import com.google.gson.Gson;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.CharBuffer;
+import javax.swing.JFileChooser;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.filechooser.FileSystemView;
+import sun.misc.IOUtils;
+
 /**
  *
  * @author Hugh
  */
 public class ResourcesForm extends javax.swing.JDialog {
+    
+    private static final String INVENTORY_FILE_NAME = "inventory.json";
+    private static final int DEFAULT_CHARACTER_BUFFER_WIDTH = 200;
+    
+    private class InventoryItem {
+        private String name;
+        private int count;
+        
+        public String getName() {
+            return this.name;
+        }
+        
+        public int getCount() {
+            return this.count;
+        }
+        
+        public void setCount(int count) {
+            this.count = count;
+        }
+        
+        public InventoryItem() {
+            // TODO Needed for Gson I think?
+        }
+        
+        public InventoryItem(String resource, int count) {
+            this.name = resource;
+            this.count = count;
+        }
+    }
+    
+    private InventoryItem[] inventory;
+    
+    private String getInventoryFileLocation() {
+        JFileChooser fileChooser = new JFileChooser();
+        FileSystemView fileSystemView = fileChooser.getFileSystemView();
+        String inventoryFileLocation = fileSystemView.getDefaultDirectory().toString() + "/" + INVENTORY_FILE_NAME;
+        return inventoryFileLocation;
+    }
+    
+    private void createEmptyInventoryFile() {
+        String path = getInventoryFileLocation();
+        
+    }
+    
+    private void loadInventory() {
+        JFileChooser fileChooser = new JFileChooser();
+        FileSystemView fileSystemView = fileChooser.getFileSystemView();
+        String inventoryFileLocation = fileSystemView.getDefaultDirectory().toString() + "/" + INVENTORY_FILE_NAME;
+        
+        FileReader fileReader;
+        StringBuilder builder = new StringBuilder();
+        try {
+            fileReader = new FileReader(inventoryFileLocation);
+            char c;
+            while ((c = (char) fileReader.read()) != -1) {
+                builder.append(c);
+            }
+            fileReader.close();
+        }
+        catch (FileNotFoundException e) {
+            // No inventory file
+            createEmptyInventoryFile();
+            // Set builder?
+        }
+        catch (IOException e) {
+            // Set builder?
+        }
+        
+        String inventoryJSON = builder.toString();
+        Gson gson = new Gson();
+        InventoryItem item = gson.fromJson(inventoryJSON, InventoryItem.class);
+    }
+    
+    private InventoryItem getTableRow(int rowIndex) throws IllegalArgumentException {
+        if (rowIndex >= inventory.length) {
+            throw new IllegalArgumentException("Argument out of range");
+        }
+        return inventory[rowIndex];
+    }
+    
+    private class ResourceTableListener implements TableModelListener {
 
+        @Override
+        public void tableChanged(TableModelEvent e) {
+            // Write change
+            Gson gson = new Gson();
+            InventoryItem item = getTableRow(e.getFirstRow());
+            String text = gson.toJson(item, InventoryItem.class);            
+        }
+        
+    }
+    
     /**
      * Creates new form ResourcesForm
      */
     public ResourcesForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        requestsTable.getModel().addTableModelListener(new ResourceTableListener());
     }
 
     /**
@@ -32,12 +137,12 @@ public class ResourcesForm extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        inventoryTable = new javax.swing.JTable();
+        inventoryLabel = new javax.swing.JLabel();
+        resourcesSeparator = new javax.swing.JSeparator();
+        requestsLabel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        requestsTable = new javax.swing.JTable();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,7 +159,7 @@ public class ResourcesForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        inventoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -73,13 +178,16 @@ public class ResourcesForm extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        inventoryTable.setName("inventoryTable"); // NOI18N
+        jScrollPane1.setViewportView(inventoryTable);
 
-        jLabel1.setText("Current Inventory");
+        inventoryLabel.setText("Current Inventory");
+        inventoryLabel.setName("inventoryLabel"); // NOI18N
 
-        jLabel2.setText("Requests");
+        requestsLabel.setText("Requests");
+        requestsLabel.setName("requestsLabel"); // NOI18N
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        requestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -98,34 +206,35 @@ public class ResourcesForm extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable3);
+        requestsTable.setName("requestsTable"); // NOI18N
+        jScrollPane3.setViewportView(requestsTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addComponent(jSeparator1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addComponent(resourcesSeparator)
+            .addComponent(jScrollPane3)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(429, Short.MAX_VALUE))
-            .addComponent(jScrollPane3)
+                    .addComponent(inventoryLabel)
+                    .addComponent(requestsLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jLabel1)
+                .addComponent(inventoryLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resourcesSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(requestsLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -176,14 +285,14 @@ public class ResourcesForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel inventoryLabel;
+    private javax.swing.JTable inventoryTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JLabel requestsLabel;
+    private javax.swing.JTable requestsTable;
+    private javax.swing.JSeparator resourcesSeparator;
     // End of variables declaration//GEN-END:variables
 }
