@@ -299,4 +299,9 @@ Request.create(name: "Konga", image_url: "https://encrypted-tbn3.gstatic.com/ima
 Request.create(name: "Abyei", image_url: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSEc0F0pcUIXcj8L5wArus3vzER2INUMxKjm1jDCEBJOEpI7g47")
 Request.create(name: "Machar", image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQazuG01NNp75b35jfVsoESAtTiRCFZSxv1Tq5x1Vb4QNzq3S3-")
 
-
+School.create(name: "test", location: "7.917793,27.596054")
+School.create(name: "test2", location: "8.515836,30.935898")
+School.create(name: "test2", location: "8.515836,27.486191")
+School.create(name: "test2", location: "5.397273,32.408066")
+School.create(name: "test2", location: "6.125836,29.343398")
+School.create(name: "test2", location: "9.795678,32.792587")
