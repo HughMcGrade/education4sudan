@@ -1,0 +1,15 @@
+body{
+	height:100%;
+}
+
+#wrapper{
+	height:100%;
+}
+
+#content{
+	height:100%;
+}
+
+#map-canvas{
+	height:100%;
+}
