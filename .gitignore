@@ -1,36 +1,36 @@
-*.py[cod]
+*.class
 
-# C extensions
-*.so
+# Package Files #
+*.jar
+*.war
+*.ear
 
-# Packages
-*.egg
-*.egg-info
-dist
-build
-eggs
-parts
-bin
-var
-sdist
-develop-eggs
-.installed.cfg
-lib
-lib64
-__pycache__
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/test/tmp/
+/test/version_tmp/
+/tmp/
 
-# Installer logs
-pip-log.txt
+## Documentation cache and generated files:
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
 
-# Unit test / coverage reports
-.coverage
-.tox
-nosetests.xml
+## Environment normalisation:
+/.bundle/
+/lib/bundler/man/
 
-# Translations
-*.mo
+# for a library or gem, you might want to ignore these files since the code is
+# intended to run in multiple environments; otherwise, check them in:
+# Gemfile.lock
+# .ruby-version
+# .ruby-gemset
 
-# Mr Developer
-.mr.developer.cfg
-.project
-.pydevproject
+# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+.rvmrc
