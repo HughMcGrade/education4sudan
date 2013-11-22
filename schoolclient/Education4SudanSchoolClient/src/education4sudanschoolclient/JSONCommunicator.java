@@ -39,6 +39,7 @@ public class JSONCommunicator {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setDoOutput(true);
             urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestProperty("Content-Type", "application/json");
         } catch (IOException ex) {
             Logger.getLogger(JSONCommunicator.class.getName()).log(Level.SEVERE, null, ex);
             throw new ConnectException("Unable to connect to server.");
