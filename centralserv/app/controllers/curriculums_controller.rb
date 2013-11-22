@@ -6,6 +6,7 @@ class CurriculumsController < ApplicationController
 
   def new
     @curriculum = Curriculum.new
+    @grade = Grade.find(params[:id])
   end
 
   def show

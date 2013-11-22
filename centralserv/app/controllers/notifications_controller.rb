@@ -9,6 +9,8 @@ class NotificationsController < ApplicationController
   end
 
   def new
+    @notification = Notification.new
+    @school = School.find(params[:school_id])
   end
 
   def create

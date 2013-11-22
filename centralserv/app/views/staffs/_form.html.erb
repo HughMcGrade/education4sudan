@@ -1,9 +1,8 @@
 <div id="build-staff">
   <%= form_for @staff do |n| %>
-    <%= n.text_field :name, value: name %>
-    <%= n.text_field :role, value: role %>
-    <%= n.text_area :school_id, class: "tinymce", value: school_id %>
-    <%= tinymce %>
+    <%= n.text_field :name, placeholder: "Enter name here" %>
+    <%= n.text_field :role, placeholder: "Enter role here" %>
+    <%= n.hidden_field :school_id, value: school_id %>
     <p></p>
     <%= n.submit %>
   <% end %>
