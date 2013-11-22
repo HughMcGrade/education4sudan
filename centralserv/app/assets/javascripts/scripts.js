@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	function initialize() {
+	function initializeMap() {
 		$mapContainer = $("#map-canvas");
 
 	  var mapOptions = {
@@ -40,10 +40,9 @@ $(document).ready(function(){
     		infowindow.open(map,marker);
   		});
 	  });
-
-	  
 	}
+	google.maps.event.addDomListener(window, 'load', initializeMap);
 
-	google.maps.event.addDomListener(window, 'load', initialize);
+	
 });
 	

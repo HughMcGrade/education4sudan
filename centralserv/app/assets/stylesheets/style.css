@@ -13,3 +13,8 @@ body{
 #map-canvas{
 	height:100%;
 }
+
+#stats-chart1{
+	height: 200px;
+	width: 100%;
+}

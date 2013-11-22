@@ -11,6 +11,9 @@ class SchoolsController < ApplicationController
 
   def show
     @school = School.find(params[:id])
+
+    @staffs = Staff.where({school_id:1})
+    
   end
 
 end

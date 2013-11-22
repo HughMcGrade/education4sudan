@@ -12,3 +12,10 @@ School.create(name: "test2", location: "8.515836,27.486191")
 School.create(name: "test2", location: "5.397273,32.408066")
 School.create(name: "test2", location: "6.125836,29.343398")
 School.create(name: "test2", location: "9.795678,32.792587")
+
+
+Staffs.create(name: "Subin", role: "teacher",school_id:"1")
+Staffs.create(name: "Nafy", role: "teacher",school_id:"1")
+Staffs.create(name: "Subin", role: "teacher",school_id:"1")
+Staffs.create(name: "Subin", role: "teacher",school_id:"1")
+
