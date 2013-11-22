@@ -62,6 +62,11 @@ public final class Main extends javax.swing.JFrame {
         });
 
         jButton3.setText("Notifications");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Teachers");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +171,7 @@ public final class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Attendance file not found.");
         }
         
-        try {
+        /*try {
             JSONCommunicator.sendJson(JSONCommunicator.INVENTORY_ADDRESS, readFile(ResourcesForm.INVENTORY_FILE_NAME));
         }
         catch (ConnectException e) {
@@ -176,7 +181,7 @@ public final class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send inventory list.");
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(rootPane, "Inventory file not found");
-        }
+        }*/
         
         try {
             JSONCommunicator.sendJson(JSONCommunicator.REQUEST_ADDRESS, readFile(ResourcesForm.REQUESTS_FILE_NAME));
@@ -190,6 +195,10 @@ public final class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Requests file not found");
         }
     }//GEN-LAST:event_pushButtonActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new NotificationForm().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
