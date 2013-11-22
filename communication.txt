@@ -1,0 +1,10 @@
+Out:
+Attendance
+Curriculum
+Requests
+Teachers
+Inventory
+
+In:
+Notifications
+Request status - request_status

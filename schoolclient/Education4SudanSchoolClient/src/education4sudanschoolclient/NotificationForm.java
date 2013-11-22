@@ -4,6 +4,19 @@
  * and open the template in the editor.
  */
 
+/*
+Out:
+Attendance
+Curriculum
+Requests
+Teachers
+Inventory
+
+In:
+Notifications
+Request status
+*/
+
 package education4sudanschoolclient;
 
 import com.google.gson.reflect.TypeToken;
