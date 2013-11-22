@@ -6,6 +6,15 @@
 
 package education4sudanschoolclient;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.ConnectException;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Hugh
@@ -32,6 +41,7 @@ public final class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        pushButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +68,13 @@ public final class Main extends javax.swing.JFrame {
             }
         });
 
+        pushButton.setText("Push");
+        pushButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pushButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,8 +82,10 @@ public final class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+                    .addComponent(pushButton, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))
                 .addGap(139, 139, 139)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -84,7 +103,9 @@ public final class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(pushButton)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,6 +123,67 @@ public final class Main extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         new TeachersForm().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private String readFile(String fileName) {
+        StringBuilder builder = new StringBuilder();    
+        try (BufferedReader fileReader = new BufferedReader (new FileReader(SchoolData.getDataFileLocation(fileName)))) {
+            while (fileReader.ready()) {
+                builder.append(fileReader.readLine());
+                builder.append(System.getProperty("line.separator"));
+            }
+        }
+        catch (FileNotFoundException e) {
+            // No file
+            return "";
+        }
+        catch (IOException e) {
+            // TODO handle
+            return "";
+        }
+        return builder.toString();
+    }
+    
+    private void pushButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushButtonActionPerformed
+        try {
+            JSONCommunicator.sendJson(JSONCommunicator.TEACHERS_ADDRESS, readFile(TeachersForm.TEACHERS_FILE_NAME));
+        }
+        catch (ConnectException e) {
+           JOptionPane.showMessageDialog(rootPane, e.getMessage() + " Could not send teachers list.");
+        }
+        catch (MalformedURLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send teachers list.");
+        }
+        
+        try {
+            JSONCommunicator.sendJson(JSONCommunicator.ATTENDANCE_ADDRESS, readFile(AttendanceForm.PUPILS_FILE_NAME));
+        }
+        catch (ConnectException e) {
+           JOptionPane.showMessageDialog(rootPane, e.getMessage() + " Could not send attendance list.");
+        }
+        catch (MalformedURLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send attendance list.");
+        }
+        
+        try {
+            JSONCommunicator.sendJson(JSONCommunicator.INVENTORY_ADDRESS, readFile(ResourcesForm.INVENTORY_FILE_NAME));
+        }
+        catch (ConnectException e) {
+           JOptionPane.showMessageDialog(rootPane, e.getMessage() + " Could not send inventory list.");
+        }
+        catch (MalformedURLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send inventory list.");
+        }
+        
+        try {
+            JSONCommunicator.sendJson(JSONCommunicator.REQUEST_ADDRESS, readFile(ResourcesForm.REQUESTS_FILE_NAME));
+        }
+        catch (ConnectException e) {
+           JOptionPane.showMessageDialog(rootPane, e.getMessage() + " Could not send requests list.");
+        }
+        catch (MalformedURLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send requests list.");
+        }
+    }//GEN-LAST:event_pushButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,5 +225,6 @@ public final class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton pushButton;
     // End of variables declaration//GEN-END:variables
 }

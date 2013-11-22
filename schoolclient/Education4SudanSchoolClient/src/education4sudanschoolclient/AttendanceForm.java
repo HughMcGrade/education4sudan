@@ -18,6 +18,8 @@ import javax.swing.table.TableModel;
  */
 public final class AttendanceForm extends javax.swing.JFrame {
 
+    public static final String PUPILS_FILE_NAME = "pupils";
+    
     public class Pupil {
         private boolean isPresent;
         private String name;
@@ -91,7 +93,6 @@ public final class AttendanceForm extends javax.swing.JFrame {
         private static final int LOCATION_COLUMN_INDEX = 3;
         private static final int BIRTH_COLUMN_INDEX = 4;
         private static final int COLUMN_COUNT = 5;
-        private static final String PUPILS_FILE_NAME = "pupils";
 
         public AttendanceTableModel() {
             super(PUPILS_FILE_NAME, new TypeToken<ArrayList<Pupil>>(){}.getType());
