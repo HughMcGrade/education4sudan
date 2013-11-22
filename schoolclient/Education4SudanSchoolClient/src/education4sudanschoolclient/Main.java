@@ -43,7 +43,10 @@ public final class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        pushButton = new javax.swing.JButton();
+        pushAttendance = new javax.swing.JButton();
+        pushResourcesButton = new javax.swing.JButton();
+        fetchNotificationsButton = new javax.swing.JButton();
+        pushTeachersButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,10 +78,26 @@ public final class Main extends javax.swing.JFrame {
             }
         });
 
-        pushButton.setText("Push");
-        pushButton.addActionListener(new java.awt.event.ActionListener() {
+        pushAttendance.setText("Push Attendance");
+        pushAttendance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pushButtonActionPerformed(evt);
+                pushAttendanceActionPerformed(evt);
+            }
+        });
+
+        pushResourcesButton.setText("Push Resources");
+        pushResourcesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pushResourcesButtonActionPerformed(evt);
+            }
+        });
+
+        fetchNotificationsButton.setText("Fetch Notifications");
+
+        pushTeachersButton.setText("Push Teachers");
+        pushTeachersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pushTeachersButtonActionPerformed(evt);
             }
         });
 
@@ -88,16 +107,25 @@ public final class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pushButton, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))
-                .addGap(139, 139, 139)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(pushAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+                            .addGap(139, 139, 139))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(134, 134, 134)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fetchNotificationsButton)
+                        .addGap(134, 134, 134)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pushResourcesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(143, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pushTeachersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,13 +134,19 @@ public final class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(78, 78, 78)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pushAttendance)
+                    .addComponent(pushResourcesButton))
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addGap(39, 39, 39)
-                .addComponent(pushButton)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fetchNotificationsButton)
+                    .addComponent(pushTeachersButton))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,7 +180,7 @@ public final class Main extends javax.swing.JFrame {
         return builder.toString();
     }
     
-    private void pushButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushButtonActionPerformed
+    private void pushAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushAttendanceActionPerformed
         try {
             JSONCommunicator.sendJson(JSONCommunicator.TEACHERS_ADDRESS, readFile(TeachersForm.TEACHERS_FILE_NAME));
         }
@@ -171,18 +205,13 @@ public final class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Attendance file not found.");
         }
         
-        /*try {
-            JSONCommunicator.sendJson(JSONCommunicator.INVENTORY_ADDRESS, readFile(ResourcesForm.INVENTORY_FILE_NAME));
-        }
-        catch (ConnectException e) {
-           JOptionPane.showMessageDialog(rootPane, e.getMessage() + " Could not send inventory list.");
-        }
-        catch (MalformedURLException e) {
-            JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send inventory list.");
-        } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Inventory file not found");
-        }*/
-        
+    }//GEN-LAST:event_pushAttendanceActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new NotificationForm().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void pushResourcesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushResourcesButtonActionPerformed
         try {
             JSONCommunicator.sendJson(JSONCommunicator.REQUEST_ADDRESS, readFile(ResourcesForm.REQUESTS_FILE_NAME));
         }
@@ -194,11 +223,21 @@ public final class Main extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(rootPane, "Requests file not found");
         }
-    }//GEN-LAST:event_pushButtonActionPerformed
+    }//GEN-LAST:event_pushResourcesButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new NotificationForm().setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void pushTeachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushTeachersButtonActionPerformed
+        try {
+            JSONCommunicator.sendJson(JSONCommunicator.TEACHERS_ADDRESS, readFile(TeachersForm.TEACHERS_FILE_NAME));
+        }
+        catch (ConnectException e) {
+           JOptionPane.showMessageDialog(rootPane, e.getMessage() + " Could not send teachers list.");
+        }
+        catch (MalformedURLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send teachers list.");
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Requests list not found.");
+        }
+    }//GEN-LAST:event_pushTeachersButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,10 +275,13 @@ public final class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton fetchNotificationsButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton pushButton;
+    private javax.swing.JButton pushAttendance;
+    private javax.swing.JButton pushResourcesButton;
+    private javax.swing.JButton pushTeachersButton;
     // End of variables declaration//GEN-END:variables
 }
