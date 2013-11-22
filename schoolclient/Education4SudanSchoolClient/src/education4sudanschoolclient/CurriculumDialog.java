@@ -10,7 +10,7 @@ package education4sudanschoolclient;
  *
  * @author Hugh
  */
-public class CurriculumDialog extends javax.swing.JDialog {
+public final class CurriculumDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form CurriculumForm
