@@ -231,7 +231,7 @@
                   <div class="box-header">
                     <div class="title">
                       <i class="icon-group"></i>
-                      Users
+                      School staff
                     </div>
                     <div class="actions">
                       <a class="btn box-remove btn-xs btn-link" href="#"><i class="icon-remove"></i>
@@ -242,7 +242,7 @@
                     </div>
                   </div>
                   <div class="box-content">
-                    <div class="list-group">
+                    <div class="list-group" id="school_staff">
                       <%= render partial: "userListItem", locals: { staffs:@staffs } %>
 
                     </div>
@@ -264,11 +264,25 @@
                     </div>
                   </div>
                   <div class="box-content">
-                   <!--  <div id="stats-chart1" style="padding: 0px; position: relative;"><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px;"></canvas></div> -->
+                     <div class="list-group" id="school_orders">
+                      <%= render partial: "orderListItems", locals: { resources:@resources } %>
+
+                    </div>
                   </div>
                 </div>
               </div>
               <hr class="hr-drouble">
+                         <div class="group-header">
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <div class="text-center">
+                      <h2>Attendence</h2>
+                      <small class="text-muted"></small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
                 <div class='box-content'>
                       <div id='stats-chart1'></div>
                     </div>
