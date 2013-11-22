@@ -7,7 +7,7 @@ class GradesController < ApplicationController
   def show
     @grade = Grade.find(params[:id])
     session[:grade_id] = params[:id]
-     @curriculum = Curriculum.new
+    @curriculum = Curriculum.new
   end
 
 end
