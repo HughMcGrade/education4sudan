@@ -32,6 +32,9 @@ import sun.misc.IOUtils;
  */
 public final class ResourcesForm extends javax.swing.JFrame {
     
+    public static final String INVENTORY_FILE_NAME = "inventory";
+    public static final String REQUESTS_FILE_NAME = "requests";
+    
     private class InventoryTableModel extends SchoolData<InventoryItem> implements TableModel {
         
         private ArrayList<TableModelListener> tableModelListeners;
@@ -41,7 +44,6 @@ public final class ResourcesForm extends javax.swing.JFrame {
         private static final int NAME_COLUMN_INDEX = 0;
         private static final int COUNT_COLUMN_INDEX = 1;
         private static final int COLUMN_COUNT = 2;
-        private static final String INVENTORY_FILE_NAME = "inventory";
 
         public InventoryTableModel() {
             super(INVENTORY_FILE_NAME, new TypeToken<ArrayList<InventoryItem>>(){}.getType());
@@ -152,7 +154,6 @@ public final class ResourcesForm extends javax.swing.JFrame {
         private static final int DESCRIPTION_COLUMN_INDEX = 1;
         private static final int RESPONSE_COLUMN_INDEX = 2;
         private static final int COLUMN_COUNT = 3;
-        private static final String REQUESTS_FILE_NAME = "requests";
         
 
         public RequestsTableModel() {
