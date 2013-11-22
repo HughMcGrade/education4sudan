@@ -4,7 +4,8 @@ class CreateRequests < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :school_id
-      t.integer :response_id
+      t.text :response
+      t.string :image_url
     end
   end
 end

@@ -1,0 +1,28 @@
+<section id='content'>  
+  <div class="row">
+    <div class="col-md-9">
+      <%= image_tag @request.image_url %>
+      <h2><%= @request.name %></h2>
+      <%= @request.description %>
+      <br>
+
+    </div>
+
+    <div class="col-md-3">
+        <h3 class='profile-list-headers'>Needed Resources</h3>
+      <% unless @request.resources.empty? %>
+        <% @request.resources.each do |resource| %>
+          <h5><%= link_to resource.name, resource_path(resource) %></h5>
+          <p><i><%= resource.description if resource.description.length < 50 %></i></p>
+        
+          <div>
+            <%= link_to "Fulfill", resource_path(resource), method: :delete, class: "success button small" %>
+            <%= link_to "Decline", resource_path(resource), method: :delete, class: "alert button small" %>
+          </div>
+        <% end %>
+      <% else %>
+        <h5>This request doesn't have any resources attached!</h5>
+      <% end %>
+    </div>
+  </div>
+</section>

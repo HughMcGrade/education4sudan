@@ -20,4 +20,6 @@
 //= require flatty/bootstrap/bootstrap.min
 //= require flatty/plugins/plugins
 //= require flatty/theme
+//= require_tree ../../../vendor/assets/javascripts/.
+//= require infinite
 //= require scripts
