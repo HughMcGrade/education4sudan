@@ -17,6 +17,8 @@ import javax.swing.table.TableModel;
  */
 public class TeachersForm extends javax.swing.JFrame {
 
+    public static final String TEACHERS_FILE_NAME = "teachers";
+    
     private class TeachersTableModel extends SchoolData<Teacher> implements TableModel {
         
         private ArrayList<TableModelListener> tableModelListeners;
@@ -32,7 +34,7 @@ public class TeachersForm extends javax.swing.JFrame {
         
 
         public TeachersTableModel() {
-            super(REQUESTS_FILE_NAME, new TypeToken<ArrayList<Teacher>>(){}.getType());
+            super(TEACHERS_FILE_NAME, new TypeToken<ArrayList<Teacher>>(){}.getType());
             tableModelListeners = new ArrayList<>();
         }
         

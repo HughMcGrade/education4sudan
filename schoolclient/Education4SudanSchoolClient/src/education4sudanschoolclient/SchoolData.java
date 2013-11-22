@@ -7,7 +7,6 @@
 package education4sudanschoolclient;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -135,7 +134,7 @@ public abstract class SchoolData<T> {
         }
     }
     
-    private String getDataFileLocation(String fileName) {
+    public static String getDataFileLocation(String fileName) {
         JFileChooser fileChooser = new JFileChooser();
         FileSystemView fileSystemView = fileChooser.getFileSystemView();
         String inventoryFileLocation = fileSystemView.getDefaultDirectory().toString() + File.separator + fileName + ".json";
