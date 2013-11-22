@@ -30,7 +30,7 @@ import sun.misc.IOUtils;
  *
  * @author Hugh
  */
-public class ResourcesForm extends javax.swing.JFrame {
+public final class ResourcesForm extends javax.swing.JFrame {
     
     private class InventoryTableModel extends SchoolData<InventoryItem> implements TableModel {
         
@@ -346,6 +346,7 @@ public class ResourcesForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        inventoryTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         inventoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -368,12 +369,15 @@ public class ResourcesForm extends javax.swing.JFrame {
         inventoryTable.setName("inventoryTable"); // NOI18N
         jScrollPane1.setViewportView(inventoryTable);
 
+        inventoryLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         inventoryLabel.setText("Current Inventory");
         inventoryLabel.setName("inventoryLabel"); // NOI18N
 
+        requestsLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         requestsLabel.setText("Requests");
         requestsLabel.setName("requestsLabel"); // NOI18N
 
+        requestsTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         requestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -396,6 +400,7 @@ public class ResourcesForm extends javax.swing.JFrame {
         requestsTable.setName("requestsTable"); // NOI18N
         jScrollPane3.setViewportView(requestsTable);
 
+        newRequestButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         newRequestButton.setText("New Request");
         newRequestButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,6 +408,7 @@ public class ResourcesForm extends javax.swing.JFrame {
             }
         });
 
+        addResourceButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addResourceButton.setText("Add Resource");
         addResourceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -410,6 +416,7 @@ public class ResourcesForm extends javax.swing.JFrame {
             }
         });
 
+        removeResourceButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         removeResourceButton.setText("Remove Resource");
         removeResourceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,26 +428,28 @@ public class ResourcesForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(resourcesSeparator)
             .addComponent(jScrollPane3)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(inventoryLabel)
-                        .addGap(65, 65, 65)
-                        .addComponent(addResourceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(requestsLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(removeResourceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(requestsLabel))
-                .addContainerGap(136, Short.MAX_VALUE))
-            .addComponent(newRequestButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(newRequestButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(inventoryLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(addResourceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(removeResourceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(1, 1, 1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inventoryLabel)
                     .addComponent(addResourceButton)
@@ -450,11 +459,11 @@ public class ResourcesForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(resourcesSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(requestsLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(requestsLabel)
+                    .addComponent(newRequestButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(newRequestButton))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
