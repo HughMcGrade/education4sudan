@@ -30,6 +30,8 @@ import javax.swing.table.TableModel;
  */
 public final class NotificationForm extends javax.swing.JFrame {
 
+    public static final String NOTIFICATIONS_FILE_NAME = "notifications";
+    
     class Notification {
         final String subject;
         final String sender;
@@ -71,11 +73,10 @@ public final class NotificationForm extends javax.swing.JFrame {
         private static final int SUBJECT_COLUMN_INDEX = 1;
         private static final int DATE_COLUMN_INDEX = 2;
         private static final int COLUMN_COUNT = 3;
-        private static final String REQUESTS_FILE_NAME = "notifications";
         
 
         public NotificationsTableModel() {
-            super(REQUESTS_FILE_NAME, new TypeToken<ArrayList<ResourcesForm.RequestsItem>>(){}.getType());
+            super(NOTIFICATIONS_FILE_NAME, new TypeToken<ArrayList<Notification>>(){}.getType());
             tableModelListeners = new ArrayList<>();
         }
         
