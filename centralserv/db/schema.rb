@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121170627) do
+ActiveRecord::Schema.define(version: 20131122004824) do
 
   create_table "messages", force: true do |t|
     t.string  "title"
@@ -30,15 +30,19 @@ ActiveRecord::Schema.define(version: 20131121170627) do
     t.string  "name"
     t.text    "description"
     t.integer "school_id"
-    t.text    "response"
     t.string  "image_url"
+  end
+
+  create_table "requests_resources", force: true do |t|
+    t.integer "resource_id"
+    t.integer "request_id"
+    t.text    "response"
   end
 
   create_table "resources", force: true do |t|
     t.string  "name"
     t.text    "description"
     t.integer "school_id"
-    t.integer "request_id"
     t.string  "image_url"
     t.boolean "fulfilled"
   end
