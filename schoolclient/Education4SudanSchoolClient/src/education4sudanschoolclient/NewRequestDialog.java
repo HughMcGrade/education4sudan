@@ -13,7 +13,7 @@ import education4sudanschoolclient.ResourcesForm.RequestsItem;
  *
  * @author Hugh
  */
-public class NewRequestDialog extends javax.swing.JDialog {
+public final class NewRequestDialog extends javax.swing.JDialog {
 
     public static String NO_RESPONSE_MESSAGE = "Awaiting response";
     RequestsItem result;

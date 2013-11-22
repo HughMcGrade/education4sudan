@@ -13,9 +13,13 @@ class SchoolsController < ApplicationController
   def show
     @school = School.find(params[:id])
 
-    @staffs = Staff.where({school_id:params[:id]})
-
-    @resources = @school.requests.map {|request| request.resources}.flatten
+    @staffs = Staff.where(school_id: @school.id)
+    @resources = []
+    @requests = Request.where(school: @school)
+    @requests.each do |request|
+      @resources << request.resources
+    end
+    @resources = @resources.flatten
     
   end
 

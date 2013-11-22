@@ -5,7 +5,6 @@ class CreateResources < ActiveRecord::Migration
       t.text :description
       t.integer :school_id
       t.string :image_url
-      t.boolean :fulfilled
     end
   end
 end
