@@ -7,19 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
+school1 = School.create(name: "John Garang Memorial Secondary School", location: "9.795678,32.792587")
 School.create(name: "Elbegdorj", location: "7.917793,27.596054")
 School.create(name: "Juba primary School", location: "8.515836,30.935898")
 School.create(name: "Bahr El-Ghazal", location: "8.515836,27.486191")
 School.create(name: "Upper Nile Secondary school", location: "5.397273,32.408066")
 School.create(name: "St Mary's", location: "6.125836,29.343398")
-school1 = School.create(name: "John Garang Memorial Secondary School", location: "9.795678,32.792587")
 
 
-Staff.create(name: "Subin", role: "Headmaster",school_id:"1")
-Staff.create(name: "Nafy", role: "Teacher",school_id:"1")
-Staff.create(name: "Samir", role: "Teacher",school_id:"1")
-Staff.create(name: "Mohammed", role: "Teacher",school_id:"1")
+Staff.create(name: "Subin", role: "Headmaster", school: school1)
+Staff.create(name: "Nafy", role: "Teacher", school: school1)
+Staff.create(name: "Samir", role: "Teacher", school: school1)
+Staff.create(name: "Mohammed", role: "Teacher", school: school1)
 
 Resource.create(name: "Supplies", image_url: "http://www.inboundlogistics.com/cms/userfiles/0710_casebook-aid.jpg")
 Resource.create(name: "School in a Box", image_url: "http://www.unicef.ie/schoolinabox/images/large/school_box2-L.jpg")
