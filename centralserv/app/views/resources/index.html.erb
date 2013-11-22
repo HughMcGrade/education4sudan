@@ -1,26 +1,29 @@
-<div class="row">
-  <% if @resources.length > 0 %>
-    <div id="infinite-scroll">
-      <% @resources.each do |resource| %>
-        <div class="infinite col-md-6">
-          <div class="item-container row" style="height:90px">
-            <div class="col-md-3">
-              <%= image_tag resource.image_url, class: "mini-image" %>
-            </div>
-            <div class="col-md-3 left">
-              <h4><%= link_to resource.name, resource_path(resource), class: "item-link" %></h4>
+<section id='content'>
+  <div class="row">
+    <% if @resources.length > 0 %>
+      <div id="infinite-scroll">
+        <% @resources.each do |resource| %>
+          <div class="col-md-1"><br></div>
+          <div class="infinite col-md-5">
+            <div class="item-container row" style="height:90px">
+              <div class="col-md-3">
+                <%= image_tag resource.image_url, class: "mini-image" %>
+              </div>
+              <div class="col-md-2 left">
+                <h4><%= link_to resource.name, resource_path(resource), class: "item-link" %></h4>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
 
-    <nav id="page_nav">
-      <a href="page2.html"></a>
-    </nav>
+      <nav id="page_nav">
+        <a href="page2.html"></a>
+      </nav>
 
-  <% else %>
-    <h4>There are no resources to show.</h4>
-  <% end %>
+    <% else %>
+      <h4>There are no resources to show.</h4>
+    <% end %>
 
-</div>
+  </div>
+</section>

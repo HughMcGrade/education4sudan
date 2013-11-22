@@ -255,3 +255,7 @@ textarea {
 .category-dropdowns {
   font-size: 150%;
 }
+
+.mini-container {
+  width: 75%
+}
