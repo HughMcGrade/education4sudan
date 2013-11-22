@@ -1,5 +1,7 @@
 class DashboardController < ApplicationController
 
+  skip_before_filter :verify_authenticity_token, :except => [:index]
+
   def index
   end
 
