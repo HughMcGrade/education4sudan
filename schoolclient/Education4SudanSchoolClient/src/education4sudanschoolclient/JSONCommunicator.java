@@ -37,6 +37,7 @@ public class JSONCommunicator {
         HttpURLConnection urlConnection;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setDoOutput(true);
             urlConnection.setRequestMethod("POST");
         } catch (IOException ex) {
             Logger.getLogger(JSONCommunicator.class.getName()).log(Level.SEVERE, null, ex);
