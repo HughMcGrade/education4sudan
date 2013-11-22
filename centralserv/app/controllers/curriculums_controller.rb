@@ -1,12 +1,12 @@
 class CurriculumsController < ApplicationController
 
   def index
-    @grade = Grade.find(params[:id])
+    @grade = Grade.find(session[:grade_id])
   end
 
   def new
     @curriculum = Curriculum.new
-    @grade = Grade.find(params[:id])
+    @grade = Grade.find(session[:grade_id])
   end
 
   def show

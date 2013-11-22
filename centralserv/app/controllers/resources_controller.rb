@@ -6,10 +6,10 @@ class ResourcesController < ApplicationController
 
     @requests = @school.requests.map {|request| request.resources}.flatten
 
+    @resource = Resource.new
   end
 
   def new
-    @resource = Resource.new
   end
 
   def show

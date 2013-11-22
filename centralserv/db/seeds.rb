@@ -313,3 +313,13 @@ Request.create(school: school1, name: "Morbe", image_url: "http://www.theniles.o
 Request.create(school: school1, name: "Konga", image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRZYgKt2oK6CvFa9n32tbZnofO3ReljImZRzDrfsRvX1Mw7pG9nAQ")
 Request.create(school: school1, name: "Abyei", image_url: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSEc0F0pcUIXcj8L5wArus3vzER2INUMxKjm1jDCEBJOEpI7g47")
 Request.create(school: school1, name: "Machar", image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQazuG01NNp75b35jfVsoESAtTiRCFZSxv1Tq5x1Vb4QNzq3S3-")
+
+
+Grade.create(rank: "Grade 1")
+Grade.create(rank: "Grade 2")
+Grade.create(rank: "Grade 3")
+Grade.create(rank: "Grade 4")
+Grade.create(rank: "Grade 5")
+Grade.create(rank: "Grade 6")
+Grade.create(rank: "Grade 7")
+Grade.create(rank: "Grade 8")

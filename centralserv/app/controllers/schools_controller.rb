@@ -13,6 +13,8 @@ class SchoolsController < ApplicationController
   def show
     @school = School.find(params[:id])
 
+    @staff = Staff.new
+    
     @staffs = Staff.where(school_id: @school.id)
     @resources = []
     @requests = Request.where(school: @school)
