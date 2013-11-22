@@ -123,7 +123,7 @@ public abstract class SchoolData<T> {
         }
     }
     
-    private void createEmptyDataFile() {
+    public static void createEmptyDataFile() {
         File newFile = new File(fileLocation);
         try {
             newFile.createNewFile();

@@ -6,9 +6,12 @@
 
 package education4sudanschoolclient;
 
+import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.MalformedURLException;
@@ -93,6 +96,11 @@ public final class Main extends javax.swing.JFrame {
         });
 
         fetchNotificationsButton.setText("Fetch Notifications");
+        fetchNotificationsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fetchNotificationsButtonActionPerformed(evt);
+            }
+        });
 
         pushTeachersButton.setText("Push Teachers");
         pushTeachersButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,31 +114,25 @@ public final class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(pushAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
-                            .addGap(139, 139, 139))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(134, 134, 134)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(fetchNotificationsButton)
-                        .addGap(134, 134, 134)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pushAttendance, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(fetchNotificationsButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pushResourcesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pushTeachersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(117, Short.MAX_VALUE))
+                    .addComponent(pushTeachersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -138,7 +140,7 @@ public final class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pushAttendance)
                     .addComponent(pushResourcesButton))
-                .addGap(49, 49, 49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
@@ -146,7 +148,7 @@ public final class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fetchNotificationsButton)
                     .addComponent(pushTeachersButton))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -165,7 +167,7 @@ public final class Main extends javax.swing.JFrame {
         new TeachersForm().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private String readFile(String fileName) throws FileNotFoundException {
+    private static String readFile(String fileName) throws FileNotFoundException {
         StringBuilder builder = new StringBuilder();    
         try (BufferedReader fileReader = new BufferedReader (new FileReader(SchoolData.getDataFileLocation(fileName)))) {
             while (fileReader.ready()) {
@@ -178,6 +180,20 @@ public final class Main extends javax.swing.JFrame {
             return "";
         }
         return builder.toString();
+    }
+    
+    private static void writeFile(String fileName, String content) throws IOException {
+        File file = new File(SchoolData.getDataFileLocation(fileName));
+        try (FileWriter writer = new FileWriter(file)) {
+            writer.write(content);
+        }
+        catch (FileNotFoundException e) {
+            file.createNewFile();
+        }
+        catch (IOException e) {
+            // TODO handle
+            throw e;
+        }
     }
     
     private void pushAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushAttendanceActionPerformed
@@ -238,6 +254,20 @@ public final class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Requests list not found.");
         }
     }//GEN-LAST:event_pushTeachersButtonActionPerformed
+
+    
+    private void fetchNotificationsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fetchNotificationsButtonActionPerformed
+        try {
+            String notificationsJSON = JSONCommunicator.requestJson(JSONCommunicator.NOTIFICATIONS_ADDRESS);
+            writeFile(NotificationForm.NOTIFICATIONS_FILE_NAME, notificationsJSON);
+        } catch (MalformedURLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Internal error. Could not access notifications.");
+        } catch (ConnectException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " Could not get notifications.");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Could not write to notifications file.");
+        }
+    }//GEN-LAST:event_fetchNotificationsButtonActionPerformed
 
     /**
      * @param args the command line arguments
