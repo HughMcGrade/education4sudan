@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122004824) do
+ActiveRecord::Schema.define(version: 20131122020251) do
+
+  create_table "curriculums", force: true do |t|
+    t.integer "week"
+    t.string  "title"
+    t.text    "content"
+    t.integer "grade_id"
+  end
+
+  create_table "curriculums_staffs", force: true do |t|
+    t.integer "curriculum_id"
+    t.integer "staff_id"
+    t.string  "completed"
+  end
+
+  create_table "grades", force: true do |t|
+    t.string "rank"
+  end
+
+  create_table "grades_staffs", force: true do |t|
+  end
 
   create_table "messages", force: true do |t|
     t.string  "title"
@@ -54,8 +74,20 @@ ActiveRecord::Schema.define(version: 20131122004824) do
 
   create_table "staffs", force: true do |t|
     t.string  "name"
+    t.string  "image_url"
     t.string  "role"
     t.integer "school_id"
+  end
+
+  create_table "students", force: true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.string   "gender"
+    t.string   "contact"
+    t.integer  "grade_id"
+    t.string   "staff_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
