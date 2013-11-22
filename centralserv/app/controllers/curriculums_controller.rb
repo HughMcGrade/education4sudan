@@ -1,7 +1,7 @@
 class CurriculumsController < ApplicationController
 
   def index
-    @curriculums = Curriculum.all
+    @grade = Grade.find(params[:id])
   end
 
   def new
@@ -10,6 +10,9 @@ class CurriculumsController < ApplicationController
 
   def show
     @curriculum = Curriculum.find(params[:id])
+  end
+
+  def create
   end
 
 end

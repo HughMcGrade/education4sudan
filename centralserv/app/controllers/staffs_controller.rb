@@ -12,4 +12,7 @@ class StaffsController < ApplicationController
     @staff = Staff.find(params[:id])
   end
 
+  def create
+  end
+
 end

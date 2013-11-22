@@ -1,0 +1,27 @@
+<section id='content'>  
+  <div class="row">
+    <div class="col-md-9 text-center">
+      <h2>Grade - <%= @grade.rank %></h2>
+      <br>
+
+    </div>
+    <%= link_to "New Curriculum", new_curriculum_path, class: "success button small" %>
+
+    <div class="col-md-3">
+        <h3 class='profile-list-headers'>Curricula</h3>
+      <% unless @grade.curriculums.empty? %>
+        <% @grade.curriculums.each do |curriculum| %>
+          <h5><%= link_to curriculum.title, curriculum_path(curriculum) %></h5>
+          <p><i><%= curriculum.content if curriculum.content.length < 50 %></i></p>
+        
+          <div>
+            <%= link_to "Edit", edit_curriculum_path(curriculum), class: "success button small" %>
+            <%= link_to "Delete", curriculum_path(curriculum), method: :delete, class: "alert button small" %>
+          </div>
+        <% end %>
+      <% else %>
+        <h5>This grade doesn't have any curriculums attached!</h5>
+      <% end %>
+    </div>
+  </div>
+</section>
