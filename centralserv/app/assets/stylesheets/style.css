@@ -13,3 +13,25 @@ body{
 #map-canvas{
 	height:100%;
 }
+
+#stats-chart1{
+	height: 200px;
+	width: 100%;
+}
+
+#school_staff .name{
+	font-size: 20px;
+}
+
+#school_staff .role{
+	font-size: 10px;
+}
+
+li {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.nav-stacked li{
+	font-size: 14px;
+}
