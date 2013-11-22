@@ -10,13 +10,13 @@ package education4sudanschoolclient;
  *
  * @author Hugh
  */
-public class MessagingForm extends javax.swing.JDialog {
+public class MessagingForm extends javax.swing.JFrame {
 
     /**
      * Creates new form MessagingForm
      */
-    public MessagingForm(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public MessagingForm() {
+        super();
         initComponents();
     }
 
@@ -72,17 +72,10 @@ public class MessagingForm extends javax.swing.JDialog {
         }
         //</editor-fold>
 
-        /* Create and display the dialog */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MessagingForm dialog = new MessagingForm(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new MessagingForm().setVisible(true);
             }
         });
     }
