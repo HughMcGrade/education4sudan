@@ -1,12 +1,11 @@
 <div id="build-students">
   <%= form_for @student do |n| %>
     <%= n.text_field :name, value: name %>
-    <%= n.text_area :age, class: "tinymce", value: role %>
-    <%= n.text_field :gender, class: "tinymce", value: role %>
-    <%= n.text_field :contact, class: "tinymce", value: role %>
-    <%= collection_select @grades %>
-    <%= n.text_area :staff_id, class: "tinymce", value: school_id %>
-    <%= tinymce %>
+    <%= n.text_field :age, placeholder: "Enter the student's age here" %>
+    <%= n.text_field :gender, placeholder: "Male, Female or Other" %>
+    <%= n.text_field :contact, placeholder: "Enter contact details here" %>
+    <%= n.collection_select @grades %>
+    <%= n.collection_select @staffs %>
     <p></p>
     <%= n.submit %>
   <% end %>

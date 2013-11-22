@@ -1,0 +1,11 @@
+<div id="build-notification">
+  <%= form_for @notification do |n| %>
+    <%= n.text_field :week, placeholder: "Enter the learning week / period here" %>
+    <%= n.text_field :title, placeholder: "Enter the learning objective here" %>
+    <%= n.text_area :content, class: "tinymce", value: content %>
+    <%= n.hidden_field :grade_id, value: grade_id %>
+    <%= tinymce %>
+    <p></p>
+    <%= n.submit %>
+  <% end %>
+</div>

@@ -6,6 +6,8 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    @grades = Grade.all
+    @staffs = Staff.all
   end
 
   def show
