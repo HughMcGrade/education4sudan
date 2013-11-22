@@ -1,10 +1,10 @@
 Out:
-Attendance
-Curriculum
-Requests
-Teachers
-Inventory
+attend
+curric
+reques
+teach
+invent
 
 In:
-Notifications
-Request status - request_status
+notif
+request_status
