@@ -18,6 +18,7 @@ Centralserv::Application.routes.draw do
   post 'reques' => "dashboard#requests"
   post 'teach' => "dashboard#teachers"
   post 'invent' => "dashboard#inventory"
+  get 'notif' => "dashboard#notif"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

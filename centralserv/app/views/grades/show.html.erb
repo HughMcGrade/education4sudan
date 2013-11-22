@@ -6,7 +6,7 @@
                     <span>Grade - <%= @grade.rank %> </span>
                   </h1>
                   <div class="pull-right">
-                    <button  data-toggle="modal" data-target="#myModal" type="button" class="btn btn-success">Add carricula</button>
+                    <button  data-toggle="modal" data-target="#myModal" type="button" class="btn btn-success">Add curricula</button>
                   </div>
       </div> 
   <div class="row">
@@ -19,12 +19,12 @@
           <p><i><%= curriculum.content if curriculum.content.length < 50 %></i></p>
         
           <div>
-            <%= link_to "Edit", edit_curriculum_path(curriculum), class: "success button small" %>
+            <%= link_to "Edit", curriculum_path(curriculum), class: "success button small" %>
             <%= link_to "Delete", curriculum_path(curriculum), method: :delete, class: "alert button small" %>
           </div>
         <% end %>
       <% else %>
-        <h5>This grade doesn't have any curriculums attached!</h5>
+        <h5>This grade doesn't have any curricula attached!</h5>
       <% end %>
     </div>
   </div>

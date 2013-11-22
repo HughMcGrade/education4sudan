@@ -15,7 +15,7 @@ class NotificationsController < ApplicationController
 
   def create
     @notification = Notification.create(notification_params)
-    redirect_to school_path(@notification.school_id), :notice => "Notification created successfully!"
+    redirect_to school_path(1), :notice => "Notification created successfully!"
   end
 
   private

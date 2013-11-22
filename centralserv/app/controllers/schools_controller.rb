@@ -14,6 +14,7 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
 
     @staff = Staff.new
+    @notification = Notification.new
     
     @staffs = Staff.where(school_id: @school.id)
     @resources = []

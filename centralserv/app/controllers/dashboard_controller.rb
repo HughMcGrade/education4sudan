@@ -34,6 +34,11 @@ class DashboardController < ApplicationController
 
   end
 
+  def notif
+    @notification = Notification.find(1)
+    render json: @notification
+  end
+
   def inventory
     print "!!!!!!!!!!!!!"
     name = params["dashboard"].fetch("_json")[0].fetch('title')
