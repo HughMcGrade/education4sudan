@@ -10,13 +10,13 @@ $(document).ready(function(){
 	          mapOptions);
 
 	 	var schoolNames = $mapContainer.attr("names").split("|");
-
+	 	var schoolIds = $mapContainer.attr("school-ids").split("|");
 		var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
       '<h1 id="firstHeading" class="firstHeading">$name</h1>'+
       '<div id="bodyContent">'+
-      '<p><a href="schools/1" class="btn btn-primary" >Visit >></a></p>'+
+      '<p><a href="schools/$schoolId" class="btn btn-primary" >Visit >></a></p>'+
       '</div>'+
       '</div>';
 
@@ -36,7 +36,7 @@ $(document).ready(function(){
 			});
 	  	 marker.setAnimation(google.maps.Animation.BOUNCE);
 			google.maps.event.addListener(marker, 'click', function() {
-				infowindow.setContent(contentString.replace("$name",schoolNames[index]));
+				infowindow.setContent(contentString.replace("$name",schoolNames[index]).replace("$schoolId",schoolIds[index]));
     		infowindow.open(map,marker);
   		});
 	  });
