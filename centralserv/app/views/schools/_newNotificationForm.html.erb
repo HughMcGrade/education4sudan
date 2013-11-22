@@ -1,10 +1,10 @@
 <div id="build-notification">
   <%= form_for @notification do |n| %>
-    <%= n.text_field :title, placeholder: "Subject", class:"form-control" %>
-    <%= n.text_area :content, class: "tinymce", placeholder: "Message", class:"form-control" %>
+    <%= n.text_field :title, placeholder: "Subject", class: "form-control" %>
+    <%= n.text_area :content, class: "tinymce", placeholder: "Message", class: "form-control" %>
     <%= n.hidden_field :school_id, value: school_id %>
     <%= tinymce %>
     <p></p>
-    <%= n.submit, :class => 'btn btn-primary' %>
+    <%= n.submit "Submit", :class => 'btn btn-primary' %>
   <% end %>
 </div>

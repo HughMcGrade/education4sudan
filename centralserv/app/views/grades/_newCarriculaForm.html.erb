@@ -1,11 +1,11 @@
 <div id="build-curriculum">
   <%= form_for @curriculum do |n| %>
-    <%= n.text_field :week, placeholder: "Enter the learning week / period here" %>
-    <%= n.text_field :title, placeholder: "Enter the learning objective here" %>
-    <%= n.text_area :content, class: "tinymce", value: content %>
+    <%= n.text_field :week, placeholder: "Enter the learning week / period here", class: "form-control" %>
+    <%= n.text_field :title, placeholder: "Enter the learning objectives here", class: "form-control" %>
+    <%= n.text_area :content, class: "tinymce" %>
     <%= n.hidden_field :grade_id, value: grade_id %>
     <%= tinymce %>
     <p></p>
-    <%= n.submit %>
+    <%= n.submit "Submit", :class => 'btn btn-primary' %>
   <% end %>
 </div>
