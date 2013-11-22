@@ -1,4 +1,4 @@
-class Need < ActiveRecord::Base
+class Notification < ActiveRecord::Base
 
   belongs_to :school
 end

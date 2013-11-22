@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
 
   def index
-    @school = School.find(params[:school_id])
+    @school = School.find(1)
   end
 
   def show
@@ -10,7 +10,7 @@ class NotificationsController < ApplicationController
 
   def new
     @notification = Notification.new
-    @school = School.find(params[:school_id])
+    @school = School.find(1)
   end
 
   def create
