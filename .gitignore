@@ -4,7 +4,7 @@
 *.class
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.ear
 
@@ -37,3 +37,4 @@
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+/schoolclient/Education4SudanSchoolClient/dist/
