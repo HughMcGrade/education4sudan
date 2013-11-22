@@ -2,6 +2,8 @@ body{
 	height:100%;
 }
 
+
+
 #wrapper{
 	height:100%;
 }
@@ -34,4 +36,9 @@ li {
 
 .nav-stacked li{
 	font-size: 14px;
+}
+
+#inventory_list{
+	max-height: 500px;
+	overflow-y: auto;
 }

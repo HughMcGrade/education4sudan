@@ -12,9 +12,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20131122040223) do
+<<<<<<< HEAD
+=======
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+>>>>>>> 368b711736a7cf9fb8d3c8247ef92d66933c17b0
 
   create_table "curriculums", force: true do |t|
     t.integer "week"

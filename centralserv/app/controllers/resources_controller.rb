@@ -2,10 +2,14 @@ class ResourcesController < ApplicationController
 
   def index
     @resources = Resource.all
+    @school = School.find(1)
+
+    @requests = @school.requests.map {|request| request.resources}.flatten
+
+    @resource = Resource.new
   end
 
   def new
-    @resource = Resource.new
   end
 
   def show

@@ -218,7 +218,7 @@
               
               <div class="page-header page-header-with-buttons">
                 <h1 class="pull-left">
-                  <span>School 1</span>
+                  <span><%=@school.name%></span>
                 </h1>
                 <div class="pull-right">
                   
@@ -234,11 +234,8 @@
                       School staff
                     </div>
                     <div class="actions">
-                      <a class="btn box-remove btn-xs btn-link" href="#"><i class="icon-remove"></i>
-                      </a>
+                      <button type="button" data-toggle="modal" data-target="#myModal"  class="btn btn-success">+ Add</button>
                       
-                      <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
-                      </a>
                     </div>
                   </div>
                   <div class="box-content">
@@ -277,7 +274,7 @@
                 <div class="row">
                   <div class="col-sm-6 col-sm-offset-3">
                     <div class="text-center">
-                      <h2>Attendence</h2>
+                      <h2>Attendance</h2>
                       <small class="text-muted"></small>
                     </div>
                   </div>
@@ -287,7 +284,7 @@
                 <div class='box-content'>
                       <div id='stats-chart1'></div>
                     </div>
-              <div class="group-header">
+   <!--            <div class="group-header">
                 <div class="row">
                   <div class="col-sm-6 col-sm-offset-3">
                     <div class="text-center">
@@ -796,7 +793,7 @@
                   </div>
                 </div>
               </div>
-              
+      -->         
               
               
               
@@ -1145,3 +1142,25 @@
       });
     </script>
  
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="left:0%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add a staff member</h4>
+      </div>
+      <div class="modal-body">
+       <div class="row">
+  <div class="large-8 columns">
+    <div class="new-form">
+      <%= render partial: 'newStaffForm', :locals => {name: "", description: "", school_id: @school.id} %>
+    </div>
+  </div>
+</div>
+      </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

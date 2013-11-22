@@ -1,0 +1,10 @@
+<div id="build-staff">
+  <%= form_for @staff do |n| %>
+    <%= n.text_field :name, placeholder: "Name", class:"form-control" %>
+    <br/>
+    <%= n.text_field :role, placeholder: "Role", class:"form-control" %>
+    <%= n.hidden_field :school_id, value: school_id %>
+    <p></p>
+    <%= n.submit "Create", :class => 'btn btn-primary' %>
+  <% end %>
+</div>
