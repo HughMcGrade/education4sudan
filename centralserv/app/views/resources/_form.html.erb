@@ -1,0 +1,9 @@
+<div id="build-resource">
+  <%= form_for @resource do |n| %>
+    <%= n.text_field :name, value: name %>
+    <%= n.text_area :description, class: "tinymce", value: description %>
+    <%= tinymce %>
+    <p></p>
+    <%= n.submit %>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<div id="build-staff">
+  <%= form_for @staff do |n| %>
+    <%= n.text_field :name, value: name %>
+    <%= n.text_area :role, class: "tinymce", value: role %>
+    <%= n.text_area :school_id, class: "tinymce", value: school_id %>
+    <%= tinymce %>
+    <p></p>
+    <%= n.submit %>
+  <% end %>
+</div>

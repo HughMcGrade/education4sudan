@@ -22,4 +22,5 @@
 //= require flatty/theme
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require infinite
+//= require tinymce-jquery
 //= require scripts

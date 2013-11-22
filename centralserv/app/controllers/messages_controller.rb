@@ -1,10 +1,11 @@
 class MessagesController < ApplicationController
 
   def index
+    @staff = Staff.find(params[:id])
   end
 
   def show
-    @staff = Staff.find(params[:id])
+    @message = Message.find(params[:id])
   end
 
 end
