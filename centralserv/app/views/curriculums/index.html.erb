@@ -1,0 +1,25 @@
+<section id='content'>
+  <h1>Curricula - <%= @grade.rank %></h1>
+  <div class="row">
+    <br>
+    <% if @grade.curriculums.length > 0 %>
+      <div id="infinite-scroll">
+        <% @staff.curriculums.each do |curriculum| %>
+          <div class="infinite col-md-4">
+            <div class="item-container">
+              <h4><%= link_to curriculum.title, curriculum_path(curriculum), class: "item-link" %></h4>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <nav id="page_nav">
+        <a href="page2.html"></a>
+      </nav>
+
+    <% else %>
+      <h4>There are no current curricula to show.</h4>
+    <% end %>
+
+  </div>
+</section>
