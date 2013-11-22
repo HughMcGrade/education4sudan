@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.net.ConnectException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -124,17 +126,13 @@ public final class Main extends javax.swing.JFrame {
         new TeachersForm().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private String readFile(String fileName) {
+    private String readFile(String fileName) throws FileNotFoundException {
         StringBuilder builder = new StringBuilder();    
         try (BufferedReader fileReader = new BufferedReader (new FileReader(SchoolData.getDataFileLocation(fileName)))) {
             while (fileReader.ready()) {
                 builder.append(fileReader.readLine());
                 builder.append(System.getProperty("line.separator"));
             }
-        }
-        catch (FileNotFoundException e) {
-            // No file
-            return "";
         }
         catch (IOException e) {
             // TODO handle
@@ -152,6 +150,8 @@ public final class Main extends javax.swing.JFrame {
         }
         catch (MalformedURLException e) {
             JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send teachers list.");
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Requests list not found.");
         }
         
         try {
@@ -162,6 +162,8 @@ public final class Main extends javax.swing.JFrame {
         }
         catch (MalformedURLException e) {
             JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send attendance list.");
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Attendance file not found.");
         }
         
         try {
@@ -172,6 +174,8 @@ public final class Main extends javax.swing.JFrame {
         }
         catch (MalformedURLException e) {
             JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send inventory list.");
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Inventory file not found");
         }
         
         try {
@@ -182,6 +186,8 @@ public final class Main extends javax.swing.JFrame {
         }
         catch (MalformedURLException e) {
             JOptionPane.showMessageDialog(rootPane, "Internal error. Could not send requests list.");
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Requests file not found");
         }
     }//GEN-LAST:event_pushButtonActionPerformed
 
